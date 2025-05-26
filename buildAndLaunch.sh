@@ -1,6 +1,7 @@
 #!/bin/bash
 
 scrDir=$(pwd)
+ProjectName=$(grep "project" CMakeLists.txt | sed 's/project(//' | sed 's/.$//')
 
 if [ $1 = "--remove-build" ]; then
 	rm -rf build/
@@ -27,7 +28,7 @@ fi
 
 # make plugin available from VST3_PATH:
 echo "copying plugin to ~/.vst3 ..."
-cp -r ${scrDir}/build/plugin/AudioPlugin_artefacts/VST3/AudioPlugin.vst3 ~/.vst3
+cp -r ${scrDir}/build/plugin/AudioPlugin_artefacts/VST3/*.vst3 ~/.vst3
 
 # launch Audio Plugin Host:
 echo "launching Audio Plugin Host..."
