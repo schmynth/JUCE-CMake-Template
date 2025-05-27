@@ -28,7 +28,7 @@ fi
 
 # make plugin available from VST3_PATH:
 echo "copying plugin to ~/.vst3 ..."
-cp -r ${scrDir}/build/plugin/AudioPlugin_artefacts/VST3/*.vst3 ~/.vst3
+cp -r ${scrDir}/build/plugin/AudioPlugin_artefacts/VST3/${ProjectName}.vst3 ~/.vst3
 
 # launch Audio Plugin Host:
 echo "launching Audio Plugin Host..."
