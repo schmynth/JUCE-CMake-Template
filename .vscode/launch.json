@@ -8,7 +8,7 @@
             "program": "${workspaceFolder}/libs/juce/build/extras/AudioPluginHost/AudioPluginHost_artefacts/AudioPluginHost",
             "cwd": "${workspaceFolder}",
             "MIMode": "lldb",
-            "preLaunchTask": "CMake: build"
+            "preLaunchTask": "buildAndLaunch"
         }
     ]
 }
