@@ -41,3 +41,9 @@ target_compile_definitions(${PROJECT_NAME}
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
 )
+
+# # to ignore deprecation warnings, uncomment the following lines:
+# target_compile_options(${PROJECT_NAME}
+#     PRIVATE
+#         -Wno-deprecated-declarations
+# )
