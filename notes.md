@@ -49,13 +49,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::c
 {
     const int versionHint = 1;
     APVTS::ParameterLayout layout;
-    apvts.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"CHANCE", versionHint}, 
+    layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"CHANCE", versionHint}, 
                                                         "CHANCE",
                                                         juce::NormalisableRange<float>(0.0f, 1.f, 0.01f, 1.f), 0.2f, ""));
 
     return layout;
 }
 ```
+
+>[!NOTE]
+>```juce::NormalisableRange<type>(rangeStart, rangeEnd, interval, skewFactor)```
 
 #### save/load plugin state
 
