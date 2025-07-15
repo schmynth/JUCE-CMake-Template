@@ -52,7 +52,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout AudioPluginAudioProcessor::c
     layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"CHANCE", versionHint},           // CHANCE: parameter name
                                                         "CHANCE",                                              // parameterLabel
                                                         juce::NormalisableRange<float>(0.0f, 1.f, 0.01f, 1.f), // NormalisableRange (see note below)
-                                                        0.2f, 
+                                                        0.2f,                                                  // Default value
                                                         ""));
 
     return layout;
