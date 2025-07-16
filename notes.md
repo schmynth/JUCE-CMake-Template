@@ -132,9 +132,35 @@ auto patternSelectorArea = topArea.reduced(30,1);
 ```
 
 >[!CAUTION]
->If f.e. you place three rotary sliders in a row in middleArea,
->you remove a third of middleArea from left and place slider1 in it.
->Now you are left with the rest of middleArea. To get an equally large
->area for slider two and three, you have to removeFromLeft only half of
->middleAreas width, because middleArea lost a third already.
->Finally, slider3 gets the whole rest of middleArea.
+>If f.e. you place three rotary sliders in a row in middleArea,  
+>you remove a third of middleArea from left and place slider1 in it.  
+>Now you are left with the rest of middleArea. To get an equally large  
+>area for slider two and three, you have to removeFromLeft only half of  
+>middleAreas width, because middleArea lost a third already.  
+>Finally, slider3 gets the whole rest of middleArea.  
+
+
+## Labels
+
+If you created a slider and want to add a label to it, this is how *not* to do it:
+
+```cpp
+// Chance Slider and Label
+chanceSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+chanceSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
+
+chanceLabel.setText("Chance", juce::dontSendNotification);
+chanceLabel.setJustificationType(juce::Justification::centred);
+chanceLabel.attachToComponent(&chanceSlider, false);
+chanceAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(processorRef.apvts, "CHANCE", chanceSlider);
+addAndMakeVisible(chanceSlider);
+```
+
+>[!ǸOTE]
+>addAndMakeVisible() is only called on the slider, NOT on the label.
+>Label visibility is handled by attachToComponent.
+
+>[!CAUTION]
+>This is not the best way to do it, because the label can not be placed manually.
+>Better position it manually and call addAndMakeVisible on the label as well.
+>If you manually position it, you can **not** call attachToComponent() on the Label!
