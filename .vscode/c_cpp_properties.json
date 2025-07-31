@@ -3,7 +3,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                // "${workspaceFolder}/build/plugin/juce_binarydata_BinaryData/JuceLibraryCode" // needed for intellisense to find binary data
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

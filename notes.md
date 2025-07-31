@@ -164,3 +164,50 @@ addAndMakeVisible(chanceSlider);
 >This is not the best way to do it, because the label can not be placed manually.
 >Better position it manually and call addAndMakeVisible on the label as well.
 >If you manually position it, you can **not** call attachToComponent() on the Label!
+
+<!--
+▄ ▄▖▖ ▖▄▖▄▖▖▖  ▄ ▄▖▄▖▄▖
+▙▘▐ ▛▖▌▌▌▙▘▌▌  ▌▌▌▌▐ ▌▌
+▙▘▟▖▌▝▌▛▌▌▌▐   ▙▘▛▌▐ ▛▌
+-->
+
+# Binary Data
+
+To include binary data, such as image files for knobs etc. add this to your ```CMakeLists.txt``` in ```plugin/``` :  
+
+## Step 1
+
+```cmake
+juce_add_binary_data(BinaryData     # can be any name, has to be used in Step 2
+    SOURCES 
+        data/img/knob1.png          # has to be relative path and no variables
+)
+```
+
+## Step 2
+
+Link to the BinaryData library in the same ```CMakeLists.txt```:  
+
+```cmake
+target_link_libraries(${PROJECT_NAME}
+    PRIVATE
+        juce::juce_audio_utils
+        juce::juce_audio_basics
+        juce::juce_audio_processors
+        juce::juce_gui_basics
+        juce::juce_graphics
+        juce::juce_dsp
+        BinaryData # <--- Important Line
+    PUBLIC
+        juce::juce_recommended_config_flags
+        juce::juce_recommended_lto_flags
+        juce::juce_recommended_warning_flags
+)
+```
+
+## Step 3 (optional)
+
+For IntelliSense to work correctly and find the ```BinaryData::``` members,
+uncomment line 7 in ```c_cpp_properties.json```.  
+IntelliSense can not find the header file in build directory unless
+it is explicitly added (down to parent directory of the BinaryData.h header file).
