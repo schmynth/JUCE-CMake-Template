@@ -10,7 +10,9 @@ fi
 
 # build project
 echo "configuring project with CMake..."
-cmake -S . -B build -DJUCE_BUILD_EXTRAS=ON
+# -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ensures that compile_commands.json is
+# created so that clangd lsp knows, where all the files are
+cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=1
 echo "building project..."
 cmake --build build
 
