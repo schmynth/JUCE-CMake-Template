@@ -10,7 +10,7 @@ fi
 
 # build project
 echo "configuring project with CMake..."
-cmake -S . -B build
+cmake -S . -B build -DJUCE_BUILD_EXTRAS=ON
 echo "building project..."
 cmake --build build
 
